@@ -10,9 +10,13 @@ class MPCProject {
         // Get the values of the name and age inputs
         this.name = document.getElementById('name').value;
         this.age = document.getElementById('age').value;
+        // Get the value of the smoker checkbox
+        const isSmoker = document.getElementById('smoker').checked;
 
-        // Log the name and age to the console
-        console.log(`Name: ${this.name}, Age: ${this.age}`);
+        // Log the name, age, and smoking status to the console
+        console.log(`Name: ${this.name}, Age: ${this.age}, Smoker: ${isSmoker ? 'Yes' : 'No'}`);
+
+        
     }
 }
   
