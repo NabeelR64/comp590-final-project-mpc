@@ -4,6 +4,8 @@ class MPCProject {
         // Set the properties of the MPCProject object
         this.name = '';
         this.age = '';
+        this.isSmoker = false;
+
     }
     // Define the submitInfo function for the MPCProject object
     submitInfo() {
