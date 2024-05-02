@@ -1,3 +1,6 @@
+
+
+
 // Function to generate a random prime number
 function generatePrime(min, max) {
     // Generate a random number between min and max
@@ -10,6 +13,26 @@ function generatePrime(min, max) {
         }
     }
     return num; // Prime number found
+}
+
+// Function to perform Beaver's multiplication protocol for two secret-shared values
+function beaversMultiplication(shareA, shareB, prime) {
+    // Generate random shares for masking values
+    const maskA = Math.floor(Math.random() * prime); // Random value for masking shareA
+    const maskB = Math.floor(Math.random() * prime); // Random value for masking shareB
+
+    // Compute the masked shares
+    const maskedShareA = (shareA.value - maskA + prime) % prime; // (shareA - maskA) mod prime
+    const maskedShareB = (shareB.value - maskB + prime) % prime; // (shareB - maskB) mod prime
+
+    // Compute the product of the masked shares
+    const maskedProduct = (maskedShareA * maskedShareB) % prime; // (maskedShareA * maskedShareB) mod prime
+
+    // Compute the masked product
+    const maskedShareProduct = (maskedProduct + maskA * shareB.value + maskB * shareA.value) % prime; // (maskedProduct + maskA * shareB + maskB * shareA) mod prime
+
+    // Return the masked product as a new share
+    return { index: shareA.index, value: maskedShareProduct };
 }
 
 // Function to generate random coefficients for polynomial
