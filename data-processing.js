@@ -51,8 +51,6 @@ function calculateStandardDeviation(ages) {
 
 // Function to process shares data
 function processSharesData(ageShares, smokerShares) {
-    // Example: Process shares data securely using MPC principles
-    // For demonstration purposes, let's just return the sum of shares
     const ageSum = ageShares.reduce((total, share) => total + share, 0);
     const smokerSum = smokerShares.reduce((total, share) => total + share, 0);
     

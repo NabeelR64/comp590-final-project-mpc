@@ -1,6 +1,5 @@
 // Function to send shares to servers (simulated)
 function sendSharesToServers(ageShares, smokerShares) {
-    // Simulate sending shares to separate servers
     console.log("Sending age shares to Server 1:", ageShares[0]);
     console.log("Sending age shares to Server 2:", ageShares[1]);
     console.log("Sending smoker shares to Server 3:", smokerShares[0]);
