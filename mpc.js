@@ -66,6 +66,15 @@ function splitSecret(secret, numShares, threshold) {
     return { prime, shares };
 }
 
+function computeShares(ages, isSmoker) {
+    // Split the secret for age and smoker status
+    const ageShares = ages.map(age => splitSecret(age, 2, 2)); // Split age into shares
+    const smokerShares = isSmoker.map(status => splitSecret(status ? 1 : 0, 2, 2)); // Convert smoker status to 1 or 0 and split into shares
+
+    // Return shares for age and smoker status
+    return { ageShares, smokerShares };
+}
+
 // Simulate distributing shares to two servers
 function distributeShares(shares) {
     const server1Shares = [];
@@ -86,6 +95,12 @@ function mpcAddition(share1, share2, prime) {
     const sum = (share1.value + share2.value) % prime;
     return sum;
 }
+
+module.exports = {
+    splitSecret: splitSecret,
+    beaversMultiplication: beaversMultiplication,
+    computeShares: computeShares
+};
 
 // Example usage
 const secret = 42;

@@ -5,6 +5,7 @@ function calculateAverageAge(ages) {
     return sum / ages.length;
 }
 
+
 // Function to count the number of entries
 function countEntries(data) {
     return data.length;
@@ -36,8 +37,9 @@ function calculateStandardDeviation(ages) {
     return standardDeviation;
 }
 
+
 // Function to calculate the standard deviation of ages for smokers and non-smokers
-function calculateStandardDeviationForGroups(data) {
+ function calculateStandardDeviationForGroups(data) {
     const smokerAges = data.filter(entry => entry.isSmoker).map(entry => entry.age);
     const nonSmokerAges = data.filter(entry => !entry.isSmoker).map(entry => entry.age);
 
@@ -46,3 +48,19 @@ function calculateStandardDeviationForGroups(data) {
 
     return { smokerStandardDeviation, nonSmokerStandardDeviation };
 }
+
+// Function to process shares data
+function processSharesData(ageShares, smokerShares) {
+    const ageSum = ageShares.reduce((total, share) => total + share, 0);
+    const smokerSum = smokerShares.reduce((total, share) => total + share, 0);
+    
+    return { ageSum, smokerSum };
+}
+
+
+module.exports = {
+    calculateAverageAge: calculateAverageAge,
+    calculateStandardDeviation: calculateStandardDeviation,
+    calculateStandardDeviationForGroups: calculateStandardDeviationForGroups,
+    processSharesData: processSharesData
+};
